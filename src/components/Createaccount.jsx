@@ -16,6 +16,11 @@ const Createaccount = () => {
 
    const [errorName, setErrorName] = useState('')
    const [errorEmail,setErrorEmail] = useState('')
+   const [errorPassword,setErrorPassword] = useState('')
+
+   const [errorNameStatus, setErrorNameStatus] = useState(false)
+   const [errorEmailStatus,setErrorEmailStatus] = useState(false)
+   const [errorPasswordStatus,setErrorPasswordStatus] = useState(false)
 
    const ctx = React.useContext(useContext)
 
@@ -44,10 +49,13 @@ const Createaccount = () => {
 
         if (inputValue.includes("@")) {
             setErrorName('El nombre no puede contener @');
+            setErrorNameStatus(true)
         }else if (inputValue.match(/[0-9]/)){
             setErrorName('El nombre no puede contener numeros')
+            setErrorNameStatus(true)
         }else{
             setErrorName('')
+            setErrorNameStatus(false)
         }
     }
 
@@ -57,8 +65,25 @@ const Createaccount = () => {
 
         if (!inputValue.includes("@")) {
             setErrorEmail('ingrese un correo electronico valido');
+            setErrorEmailStatus(true)
+            setTimeout(() => setErrorEmail(''),2000)
         }else{
             setErrorEmail('')
+            setErrorEmailStatus(false)
+        }
+    }
+
+    function handlePasswordChange(e) {
+        const inputValue = e.currentTarget.value;
+        setPassword(inputValue)
+        let arreglo = [...inputValue]
+        if(arreglo.length >= 8){
+            setErrorPassword('')
+            setErrorPasswordStatus(false)
+        }else{
+            setErrorPassword('la contraseña no puede contener menosde 8 caracteres')
+            setTimeout(() => setErrorPassword(''),2000)
+            setErrorPasswordStatus(true)
         }
     }
 
@@ -99,8 +124,13 @@ const Createaccount = () => {
                                 </>
                             )}
                             Password <br></br>
-                            <input type = 'input' className = 'form-control' id = 'password' placeholder = '********' value = {password} onChange = {e => setPassword(e.currentTarget.value)}></input><br></br>
-                            <button type = 'submit' className = 'btn btn-light' disabled = {!name && !email && !password || errorName} onClick = {handleCreate}>Create Account</button>
+                            <input type = 'input' className = 'form-control' id = 'password' placeholder = '********' value = {password} onChange = {handlePasswordChange}></input><br></br>
+                            {errorPassword && (
+                                <>
+                                    <h6 style={{color:'red'}}>{errorPassword}</h6>
+                                </>
+                            )}
+                            <button type = 'submit' className = 'btn btn-light' disabled = {!name && !email && !password || errorName || errorPasswordStatus || errorEmailStatus} onClick = {handleCreate}>Create Account</button>
                         </>
                     ):(
                         <>
