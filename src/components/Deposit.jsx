@@ -7,7 +7,7 @@ import { FormCard } from "../context.jsx/context";
 //Contextos
 
 
-const Deposit = ({balance,setBalance}) => {
+const Deposit = ({balance,setBalance,addTrasaction}) => {
 
     const [depositAmount, setDepositAmount] = useState(0)
     const [Status, setStatus] = useState(false)  
@@ -26,6 +26,7 @@ const Deposit = ({balance,setBalance}) => {
             setStatus(true)
             setMensaje('Transacción aprovada')
             setTimeout(() => setStatus(false),2000)
+            addTrasaction({tipo: 'Deposito', monto: depositValue, balance: balance + depositValue})
         }else if(depositValue.toString().includes('-')){
             setStatus(true)
             setMensaje('El valor no puede ser negativo')

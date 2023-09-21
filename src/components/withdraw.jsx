@@ -7,7 +7,7 @@ import { FormCard } from "../context.jsx/context";
 //Contextos
 
 
-const Withdraw = ({balance,setBalance}) => {
+const Withdraw = ({balance,setBalance,addTrasaction}) => {
 
     const [withdrawAmount, setWithdrawAmount] = useState(0)
     const [Status, setStatus] = useState(false)  
@@ -32,6 +32,7 @@ const Withdraw = ({balance,setBalance}) => {
         if (!isNaN(withdrawValue) && withdrawValue > 0 && balance - withdrawValue >= 0) {
             setBalance(prevBalance => prevBalance - withdrawValue);
             Mensaje('retiro exitoso')
+            addTrasaction({tipo: 'Retiro', monto: withdrawValue, balance: balance - withdrawValue})
         }else if(withdrawValue.toString().includes('-')){
             Mensaje('El valor no puede ser negativo')
         }else if(balance - withdrawValue < 0){
