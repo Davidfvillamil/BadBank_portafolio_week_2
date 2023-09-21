@@ -10,6 +10,8 @@ import { FormCard } from "../context.jsx/context";
 const Withdraw = ({balance,setBalance}) => {
 
     const [withdrawAmount, setWithdrawAmount] = useState(0)
+    const [Status, setStatus] = useState(false)  
+    const [mensaje, setMensaje] = useState('') 
     
 
     function handleDeposit(e){
@@ -20,8 +22,20 @@ const Withdraw = ({balance,setBalance}) => {
 
     function handleClick(){
         const withdrawValue = parseFloat(withdrawAmount);
-        if (!isNaN(withdrawValue) && withdrawValue > 0) {
+
+        function Mensaje(mensaje){
+            setStatus(true)
+            setMensaje(mensaje)
+            setTimeout(() => setStatus(false),2000)
+        }
+        
+        if (!isNaN(withdrawValue) && withdrawValue > 0 && balance - withdrawValue >= 0) {
             setBalance(prevBalance => prevBalance - withdrawValue);
+            Mensaje('retiro exitoso')
+        }else if(withdrawValue.toString().includes('-')){
+            Mensaje('El valor no puede ser negativo')
+        }else if(balance - withdrawValue < 0){
+            Mensaje('No puedes retirar más de lo que tienes')
         }
     }
 
@@ -35,10 +49,13 @@ const Withdraw = ({balance,setBalance}) => {
                         <>
                             <div>
                                 <input type="number" value={withdrawAmount} onChange={handleDeposit}/>
-                                <button onClick={handleClick}>Withdraw</button>
+                                <button onClick={handleClick} disabled = {!withdrawAmount}>Withdraw</button>
                             </div>
+                            {Status && (
+                                <h5>{mensaje}</h5>
+                            )}
                             <div>
-                                Tu balance es de:  {balance}
+                                Tu balance es de: $ {balance}
                             </div>
                         </>
                     }

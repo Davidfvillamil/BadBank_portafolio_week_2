@@ -19,7 +19,7 @@ import { Home } from './components/home'
 
 //Contextos
 import { FormContext, FormCard } from './context.jsx/context'
-import { BalanceContext } from './context.jsx/balance'
+
 
 
 
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <FormContext.Provider value={''}>
-    <BalanceContext.Provider value={''}>
+    
       <Router>
         <Navbar/>
           <Routes>
@@ -45,7 +45,7 @@ function App() {
           </Routes>
           
       </Router>
-      </BalanceContext.Provider>
+      
     </FormContext.Provider>
   )
 }
