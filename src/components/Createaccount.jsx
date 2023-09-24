@@ -96,49 +96,58 @@ const Createaccount = () => {
 
     return(
         <div className="contenedor-create-account">
-            <FormCard
+            <div className="contenedor-imagen-create-account mitad img-fluid img-thumbnail">
+                <div className="imagen-create-account"></div>
+            </div>
+            <div className="mitad formulario-create-account">
+                <FormCard
 
-                bgcolor = 'primary'
-                header = 'Create Account'
-                status = {status}
-                body = {show ? (
-                        <>
-                            Name <br></br>
-                            <input type = 'input' className = 'form-control' id = 'name' placeholder = 'Enter Name' value = {name} onChange = {handleNameChange}></input><br></br>
-                            {errorName? (
-                                <>
-                                    <h6 style={{color:'red'}}>{errorName}</h6>
-                                </>
-                            ):(
-                                <>
-                                </>
-                            )}
-                            Email <br></br>
-                            <input type = 'input' className = 'form-control' id = 'email' placeholder = 'Enter email' value = {email} onBlur = {handleEmailChange}onChange={e => setEmail(e.currentTarget.value)}></input><br></br>
-                            {errorEmail? (
-                                <>
-                                    <h6 style={{color:'red'}}>{errorEmail}</h6>
-                                </>
-                            ):(
-                                <>
-                                </>
-                            )}
-                            Password <br></br>
-                            <input type = 'input' className = 'form-control' id = 'password' placeholder = '********' value = {password} onChange = {handlePasswordChange}></input><br></br>
-                            {errorPassword && (
-                                <>
-                                    <h6 style={{color:'red'}}>{errorPassword}</h6>
-                                </>
-                            )}
-                            <button type = 'submit' className = 'btn btn-light' disabled = {!name && !email && !password || errorName || errorPasswordStatus || errorEmailStatus} onClick = {handleCreate}>Create Account</button>
-                        </>
-                    ):(
-                        <>
-                            <h4>¡You have succesfully created an account !</h4>
-                            <button type = 'submit' className = 'btn btn-light' onClick = {clearForm}>Add Another Account</button>
-                        </>
-                )}
-            ></FormCard>
+                    bgcolor = 'primary'
+                    header = 'Create Account'
+                    status = {status}
+                    body = {show ? (
+                            <>
+                                Name <br></br>
+                                <input type = 'input' className = 'form-control' id = 'name' placeholder = 'Enter Name' value = {name} onChange = {handleNameChange}></input><br></br>
+                                {errorName? (
+                                    <>
+                                        <h6 style={{color:'red'}}>{errorName}</h6>
+                                    </>
+                                ):(
+                                    <>
+                                    </>
+                                )}
+                                Email <br></br>
+                                <input type = 'input' className = 'form-control' id = 'email' placeholder = 'Enter email' value = {email} onBlur = {handleEmailChange}onChange={e => setEmail(e.currentTarget.value)}></input><br></br>
+                                {errorEmail? (
+                                    <>
+                                        <h6 style={{color:'red'}}>{errorEmail}</h6>
+                                    </>
+                                ):(
+                                    <>
+                                    </>
+                                )}
+                                Password <br></br>
+                                <input type = 'input' className = 'form-control' id = 'password' placeholder = '********' value = {password} onChange = {handlePasswordChange}></input><br></br>
+                                {errorPassword && (
+                                    <>
+                                        <h6 style={{color:'red'}}>{errorPassword}</h6>
+                                    </>
+                                )}
+                                <button type = 'submit' className = 'btn btn-light' disabled = {!name && !email && !password || errorName || errorPasswordStatus || errorEmailStatus} onClick = {handleCreate} style={{backgroundColor: '#dd3f51 ', color: 'white'}}>Create Account</button>
+                            </>
+                        ):(
+                            <>
+                                <h4>¡You have succesfully created an account !</h4>
+                                <button type = 'submit' className = 'btn btn-light' onClick = {clearForm} style={{backgroundColor: '#dd3f51 ', color: 'white'}}>Add Another Account</button>
+                                <div className="contenedor-image-success">
+                                    <div src="../images/video.mp4" alt="" className="imagen-success-create-account"/>
+                                </div>
+                                
+                            </>
+                    )}
+                ></FormCard>
+            </div>
         </div>
     )
 }
