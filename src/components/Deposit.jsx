@@ -7,7 +7,7 @@ import { FormCard } from "../context.jsx/context";
 //Contextos
 
 
-const Deposit = ({balance,setBalance,addTrasaction}) => {
+const Deposit = ({balance,setBalance,addTrasaction,usuarios}) => {
 
     const [depositAmount, setDepositAmount] = useState(0)
     const [Status, setStatus] = useState(false)  
@@ -34,26 +34,36 @@ const Deposit = ({balance,setBalance,addTrasaction}) => {
         }
     }
 
+    
+
     return (
         
             <div className="contenedor-deposit">
                 <FormCard
                     bgcolor = 'primary'
                     header = 'Deposit'
+                    
                     body = {
                         <>
                             <div>
+                                <h1>
+                                    David Villamil 
+                                </h1> <br />
+                                <div className="contenedor-balance">
+                                    <h6>Tu balance</h6>
+                                    <h3>US $ {balance}</h3>
+                                </div>
+                                <h3>Deposit</h3>
+                                <h6>Escoge una suma</h6>
                                 <input type="number" value={depositAmount} onChange={handleDeposit} placeholder="ingrese un valor"/>
-                                <button onClick={handleClick} disabled ={!depositAmount}>Deposit</button>
+                                <button className = 'btn boton-deposit'onClick={handleClick} disabled ={!depositAmount} style={{backgroundColor: '#dd3f51 ', color: 'white', marginTop: '10px'}}>Deposit</button>
                             </div>
                             {Status && (
                                 <>
-                                <h5>{mensaje}</h5>
+                                <h5 className="mensaje-de-aprovado">{mensaje}</h5>
                                 </>  
                             )}
-                            <div>
-                                Tu balance es de: $ {balance}
-                            </div>
+                            
                         </>
                     }
                 >

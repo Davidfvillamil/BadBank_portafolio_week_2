@@ -4,5 +4,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url('../images/background_deposit.png');
+    background-size: cover;
+    max-width: auto;
+    max-height: auto;
+}
+
+.contenedor-balance{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mensaje-de-aprovado{
+    color: green;
+    margin-top: 20px;
+}
+
+.contenedor-deposit{
+    background-color: #06244c;
+}
+
+.form{
+    border: solid 1px grey;
     
 }
+
+

@@ -32,6 +32,9 @@ function App() {
     setTransactions([...transctions,transaction])
   }
 
+  const [usuarios, setUsuarios] = useState([])
+  const [usuarioActivo, setUsuarioActivo] = useState('')
+
   return (
     <FormContext.Provider value={''}>
     
@@ -39,10 +42,11 @@ function App() {
         <Navbar/>
           <Routes>
             <Route path='/' element = {<Home></Home>}/>
-            <Route path='/login' element = {<Login></Login>}/>
-            <Route path='/createaccount' element = {<Createaccount></Createaccount>}></Route>
+            <Route path='/home' element = {<Home></Home>}/>
+            <Route path='/login' element = {<Login usuarios = {usuarios} setUsuarios = {setUsuarios}usuarioActivo = {usuarioActivo} setUsuarioActivo = {setUsuarioActivo}></Login>}/>
+            <Route path='/createaccount' element = {<Createaccount usuarios = {usuarios} setUsuarios = {setUsuarios}></Createaccount>}></Route>
             <Route path='/balance' element = {<Balance></Balance>}></Route>
-            <Route path='/deposit' element = {<Deposit balance ={balance} setBalance={setBalance} transactions = {transctions} setTransactions = {setTransactions} addTrasaction ={handletransaction}></Deposit>}></Route>
+            <Route path='/deposit' element = {<Deposit balance ={balance} setBalance={setBalance} transactions = {transctions} setTransactions = {setTransactions} addTrasaction ={handletransaction} usuarios = {usuarios} setUsuarios = {setUsuarios}></Deposit>}></Route>
             <Route path='/withdraw' element = {<Withdraw balance ={balance} setBalance={setBalance}addTrasaction ={handletransaction}></Withdraw>}></Route>
             <Route path='/alldata' element = {<Alldata balance ={balance} setBalance={setBalance} transactions = {transctions} setTransactions = {setTransactions} addTrasacition ={handletransaction}></Alldata>}></Route>
           </Routes>

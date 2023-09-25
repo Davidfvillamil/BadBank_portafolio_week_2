@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import '../Styles/login.css'
 
 
-const Login = () => {
+const Login = ({usuarios}) => {
 
     const [show,setShow] = React.useState(true)
     const [status, setStatus] = React.useState('')
@@ -28,10 +28,27 @@ const Login = () => {
     }
 
     function handleLogin () {
-        console.log(name,password)
+        
+
         if(!validate(name,'name')) return
         if(!validate(password,'password')) return
-        setShow(false)
+
+
+        const usuarioExistente = usuarios.find(usuario => usuario.name === name);
+        const passwordExistente = usuarios.find(usuario => usuario.password === password)
+
+        if (!usuarioExistente) {
+            setErrorName('El usuario no existe');
+            setTimeout(() => setErrorName(''),3000)
+        } else if(!passwordExistente) {
+            setErrorName('Nombre de usuario o password incorrectos');
+            setTimeout(() => setErrorName(''),3000)
+        }else{
+
+            setErrorName(''); // Resetear el mensaje de error si el usuario es válido
+            setShow(false);
+        }
+        console.log(usuarios)
     }
 
     function handleNameChange(e){

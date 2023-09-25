@@ -3,7 +3,7 @@ import { FormCard, FormContext } from "../context.jsx/context"
 import '../Styles/createAccount.css'
 
 
-const Createaccount = () => {
+const Createaccount = ({usuarios,setUsuarios}) => {
 
     
     const [show,setShow] = React.useState(true)
@@ -38,7 +38,8 @@ const Createaccount = () => {
         if(!validate(name,'name')) return
         if(!validate(email,'email')) return
         if(!validate(password,'password')) return
-        
+        usuarios.push({name,email,password})
+        console.log(usuarios)
         setShow(false)
     }
 

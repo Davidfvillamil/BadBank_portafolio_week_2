@@ -9,22 +9,7 @@ import { Popup } from "../popups/Loginpopup";
 
 const Navbar = () => {
 
-    /*
-    const [showPopup, setShowPopup] = useState(false);
-    const [popupMessage, setPopupMessage] = useState('');
-
-    const handleMouseOver = (message) => {
-        setTimeout(() => {
-          setShowPopup(true);
-          setPopupMessage(message)
-        }, 3000);
-        
-    }
-
-    const handMouseOut = () => {
-        setShowPopup(false)
-    }
-    */
+    
    
     return (
         <>
@@ -42,7 +27,10 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
                             
-                            
+                            <NavLink to={'/home'} className="NavLink-navbar">
+                                <div className="nav-NavLink" aria-current="page">Home</div>   
+                            </NavLink>
+
                             <NavLink to={'/login'} className="NavLink-navbar">
                                 <div className="nav-NavLink" aria-current="page">Login</div>   
                             </NavLink>

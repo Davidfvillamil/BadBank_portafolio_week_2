@@ -49,15 +49,22 @@ const Withdraw = ({balance,setBalance,addTrasaction}) => {
                     body = {
                         <>
                             <div>
+                                <h1>David Villamil</h1> <br />
+                                <div className="contenedor-balance">
+                                    <h6>Tu balance</h6>
+                                    <h3>US $ {balance}</h3>
+                                </div>
+                                <h3>Withdraw</h3>
+                                <h6>Escoge una suma</h6>
+                                
                                 <input type="number" value={withdrawAmount} onChange={handleDeposit}/>
-                                <button onClick={handleClick} disabled = {!withdrawAmount}>Withdraw</button>
+                                <button className = 'btn'onClick={handleClick} disabled = {!withdrawAmount}style={{backgroundColor: '#dd3f51 ', color: 'white', marginTop: '10px'}}>Withdraw</button>
+                                
                             </div>
                             {Status && (
                                 <h5>{mensaje}</h5>
                             )}
-                            <div>
-                                Tu balance es de: $ {balance}
-                            </div>
+                            
                         </>
                     }
                 >
